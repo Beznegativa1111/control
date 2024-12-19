@@ -66,7 +66,7 @@ public class CarMK implements ICar {
     }
 
     @Override
-    public void runningidle() {
+    public void runningIdle() {
         if(isEngineRunning()){
             if (fuelTankDisplay.getFillLevel() > 0) {
                 System.out.format(" текущее значение топлива:  %.2f \n", fuelTankDisplay.getFillLevel());
