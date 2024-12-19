@@ -18,22 +18,22 @@ class CarMKTest {
         CarMK carMK = new CarMK();
         boolean isRunning = true;
         carMK.engineStart();
-        assertEquals(isRunning,carMK.isEngineRunning());
+        assertEquals(isRunning, carMK.isEngineRunning());
 
     }
+
     @Test
     void engineStart_Exception() {
         CarMK carMK = new CarMK();
         boolean result = false;
-        try{
+        try {
             carMK.engineStart();
             carMK.engineStart();
-        }catch (Exception e){
-             result = true;
+        } catch (Exception e) {
+            result = true;
 
         }
         assertTrue(result);
-
 
 
     }
@@ -44,7 +44,7 @@ class CarMKTest {
         boolean isRunning = false;
         carMK.engineStart();
         carMK.engineStop();
-        assertEquals(isRunning,carMK.isEngineRunning());
+        assertEquals(isRunning, carMK.isEngineRunning());
     }
 
     @Test
@@ -53,16 +53,17 @@ class CarMKTest {
 
     @Test
     void runningIdle() throws NoSuchFieldException, NoSuchMethodException, InvocationTargetException, IllegalAccessException {
-        IFuelTank fuelTankMK1 = new FuelTankMK1(60);
-        Class<?> o  = fuelTankMK1.getClass();
-        double a = 59.90;
-        Field filllevel  = o.getDeclaredField("filllevel");
-        filllevel.setAccessible(true);
-        Method getfilllevel;
-        getfilllevel = o.getDeclaredMethod("getFillLevel");
-        getfilllevel.setAccessible(true);
-        assertEquals(a,getfilllevel.invoke(fuelTankMK1));
+        var car = new CarMK();
+        var iFuelTankField = car.getClass().getDeclaredField("iFuelTank");
+        iFuelTankField.setAccessible(true);
+        var iFuelTank = (IFuelTank) iFuelTankField.get(car);
 
+        var before = iFuelTank.getFillLevel();
+        car.runningIdle();
+        var after = iFuelTank.getFillLevel();
+
+        iFuelTankField.setAccessible(false);
+        assertEquals(0, before - after);
     }
 
     @Test
