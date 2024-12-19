@@ -9,16 +9,7 @@ public class Main {
         CarMK car1 = new CarMK();
         car1.engineStart();
         for(int i =0;i< 100000;i++){
-            car1.runningidle();
+            car1.runningIdle();
         }
-
-
-
-
-
-
-
-
-
     }
 }

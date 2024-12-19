@@ -52,7 +52,7 @@ class CarMKTest {
     }
 
     @Test
-    void runningidle() throws NoSuchFieldException, NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+    void runningIdle() throws NoSuchFieldException, NoSuchMethodException, InvocationTargetException, IllegalAccessException {
         IFuelTank fuelTankMK1 = new FuelTankMK1(60);
         Class<?> o  = fuelTankMK1.getClass();
         double a = 59.90;
